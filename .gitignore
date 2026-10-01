@@ -1,0 +1,4 @@
+main.c
+*.ld
+*.o
+startup.s
