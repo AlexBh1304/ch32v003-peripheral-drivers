@@ -4,10 +4,11 @@
 void GPIOInit(GPIO_t* pGPIO, GPIO_Config* gpioconfig)
 {
     /*If output*/
-    if(gpioconfig->Mode & 0x10)
+    if(gpioconfig->Mode & 0b10000)
     {
-        pGPIO->CFGLR &= ~(CFGLR_MASK << gpioconfig->Pin);
-        pGPIO->CFGLR |= (((gpioconfig->Mode | gpioconfig->Speed) & ~(0x10)) << gpioconfig->Pin);
+        pGPIO->CFGLR &= ~(CFGLR_MASK << gpioconfig->Pin * 4 );
+        pGPIO->CFGLR |= (((gpioconfig->Mode | gpioconfig->Speed) & ~(0x10)) << gpioconfig->Pin * 4);
+
     }
     //Input
     else
@@ -20,11 +21,11 @@ void GPIOInit(GPIO_t* pGPIO, GPIO_Config* gpioconfig)
 
             if(gpioconfig->PullOption == PULLUP)
             {
-                pGPIO->OUTDR |= (1 << Pin);
+                pGPIO->OUTDR |= (1 << gpioconfig->Pin);
             }
             else
             {
-                pGPIO->OUTDR &= ~(1 << Pin);
+                pGPIO->OUTDR &= ~(1 << gpioconfig->Pin);
             }
         }
         else
@@ -41,7 +42,7 @@ void GPIOSet(GPIO_t* pGPIO, uint8_t Pin)
 void GPIOReset(GPIO_t* pGPIO, uint8_t Pin)
 {
 
-    pGPIO->BSHR = (1 << Pin);
+    pGPIO->BSHR = (1 << (Pin + 16));
 
 }
 

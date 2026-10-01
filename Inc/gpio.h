@@ -1,3 +1,6 @@
+#ifndef GPIO_H
+#define GPIO_H
+
 #include "ch32v003.h"
 
 
@@ -41,8 +44,13 @@ void GPIOToggle(GPIO_t* pGPIO, uint8_t Pin);
 
 
 
+//Values for Output speed
+#define GPIO_SPEED_10MHZ    0b01
+#define GPIO_SPEED_2MHZ     0b10
+#define GPIO_SPEED_30MHZ    0b11
+
 //Mask for CFRLG register
-#define CFRLG_MASK              0xF
+#define CFGLR_MASK              0xF
 
 //Nibbles for modes
 #define INPUT_ANALOG_NIBBLE     0b0000
@@ -52,3 +60,4 @@ void GPIOToggle(GPIO_t* pGPIO, uint8_t Pin);
 #define PULLDOWN                0b0
 #define PULLUP                  0b1
 
+#endif

@@ -1,3 +1,6 @@
+#ifndef CH32V003_H
+#define CH32V003_H
+
 #include <stdint.h>
 
 
@@ -11,8 +14,8 @@ typedef struct
     volatile uint32_t APB2PRSTR;
     volatile uint32_t APB1PRSTR;
     volatile uint32_t AHBCENR;
-    volatile uint32_t APB2CENR;
-    volatile uint32_t APB1CENR;
+    volatile uint32_t APB2PCENR;
+    volatile uint32_t APB1PCENR;
     volatile uint32_t RSTSCKR;
 }RCC_t;
 
@@ -40,3 +43,11 @@ typedef struct
 #define GPIOD ((GPIO_t*)(GPIOD_BASE_ADDRESS))
 
 
+
+#include "gpio.h"
+#include "rcc.h"
+
+
+
+
+#endif
