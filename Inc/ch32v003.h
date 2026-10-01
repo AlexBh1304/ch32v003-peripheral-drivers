@@ -42,7 +42,34 @@ typedef struct
 #define GPIOC ((GPIO_t*)(GPIOC_BASE_ADDRESS))
 #define GPIOD ((GPIO_t*)(GPIOD_BASE_ADDRESS))
 
+#define ADC_BASE_ADDRESS  0x40012400
 
+typedef struct
+{
+    volatile uint32_t STATR;
+    volatile uint32_t CTRL1;
+    volatile uint32_t CTRL2;
+    volatile uint32_t SAMPTR1;
+    volatile uint32_t SAMPTR2;
+    volatile uint32_t IOFR1;
+    volatile uint32_t IOFR2;
+    volatile uint32_t IOFR3;
+    volatile uint32_t IOFR4;
+    volatile uint32_t WDHTR;
+    volatile uint32_t WDLTR;
+    volatile uint32_t RSQR1;
+    volatile uint32_t RSQR2;
+    volatile uint32_t RSQR3;
+    volatile uint32_t ISQR;
+    volatile uint32_t IDATAR1;
+    volatile uint32_t IDATAR2;
+    volatile uint32_t IDATAR3;
+    volatile uint32_t IDATAR4;
+    volatile uint32_t RDATAR;
+    volatile uint32_t DLYR;
+}ADC_t;
+
+#define ADC     ((ADC_t*)(ADC_BASE_ADDRESS))
 
 #include "gpio.h"
 #include "rcc.h"
