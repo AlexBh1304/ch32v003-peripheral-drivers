@@ -14,6 +14,7 @@ typedef struct
 
 void USARTInit(USART_t* pUSART, USART_Config* pConfig);
 void UsartSendByte(uint8_t* byte,USART_t* pUSART );
+void UsartRxByte(uint8_t* byte,USART_t* pUSART );
 uint8_t UsartFlagStatus(uint8_t usartflag,USART_t* pUSART);
 
 //Options for Data Size 
@@ -37,5 +38,6 @@ uint8_t UsartFlagStatus(uint8_t usartflag,USART_t* pUSART);
 //Flag masks
 
 #define USART_TXE_FLAG  (1 << 7)
+#define USART_RXNE_FLAG  (1 << 5)
 
 #endif

@@ -94,7 +94,7 @@ typedef struct
 #include "gpio.h"
 #include "rcc.h"
 #include "usart.h"
-
+#include "adc.h"
 
 
 #endif

@@ -18,6 +18,9 @@ void USARTInit(USART_t* pUSART, USART_Config* pConfig)
     
     GPIOInit(GPIOD, &TxGpio);
     
+    GPIOD->CFGLR &= ~(0xF << 24);
+    GPIOD->CFGLR |= (0b0100 << 24);
+    
     
     USARTClockControl(USART);
     
@@ -52,6 +55,9 @@ void USARTInit(USART_t* pUSART, USART_Config* pConfig)
     //Tx Enable
     USART->CTLR1 |= (0x1 << 3);
 
+    //Rx Enable
+    USART->CTLR1 |= (0x1 << 2);
+
     //Usart Enable
     USART->CTLR1 |= (0x1 << 13);
 }
@@ -64,6 +70,11 @@ void UsartSendByte(uint8_t* pByte, USART_t* pUSART)
 
 }
 
+void UsartRxByte(uint8_t* byte,USART_t* pUSART)
+{
+    while(!(UsartFlagStatus(USART_RXNE_FLAG, USART)));
+    *byte = pUSART->DATAR;
+}
 uint8_t UsartFlagStatus(uint8_t usartflag,USART_t* pUSART)
 {
     if(pUSART->STATR & usartflag)
