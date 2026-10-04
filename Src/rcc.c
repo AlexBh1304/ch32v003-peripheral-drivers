@@ -18,3 +18,14 @@ void GPIOxClockControl(GPIO_t* pGPIO)
     }
 }
 
+void USARTClockControl(USART_t* pUSART)
+{
+    switch((uint32_t)(pUSART))
+    {
+        case((uint32_t)USART):
+            RCC->APB2PCENR |= (1 << RCC_APB2PCENR_USARTEN);
+            break;
+
+    }
+
+}

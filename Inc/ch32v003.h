@@ -71,9 +71,29 @@ typedef struct
 
 #define ADC     ((ADC_t*)(ADC_BASE_ADDRESS))
 
+#define USART_BASE_ADDRESS  0x40013800
+
+
+typedef struct
+{
+    volatile uint32_t STATR;
+    volatile uint32_t DATAR;
+    volatile uint32_t BRR;
+    volatile uint32_t CTLR1;
+    volatile uint32_t CTLR2;
+    volatile uint32_t CTLR3;
+    volatile uint32_t GPR;
+
+}USART_t;
+
+#define USART     ((USART_t*)(USART_BASE_ADDRESS))
+
+
+
+
 #include "gpio.h"
 #include "rcc.h"
-
+#include "usart.h"
 
 
 
